@@ -2,8 +2,16 @@ function DashboardHeader() {
   return (
     <header className="dashboard-header">
       <div>
+        <span className="eyebrow">
+          PERSONAL FINANCE
+        </span>
+
         <h1>Subscription Tracker</h1>
-        <p>Manage your recurring subscriptions and renewal dates.</p>
+
+        <p>
+          Track recurring expenses, renewal dates,
+          and monthly cash-flow burn.
+        </p>
       </div>
     </header>
   );

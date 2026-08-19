@@ -214,6 +214,13 @@ td {
   opacity: 0.5;
   background: #f7f8fa;
 }
+.paused-row td {
+  color: #8992a3;
+}
+
+.paused-row strong {
+  color: #697386;
+}
 
 .toggle-button {
   border: 1px solid #d9dee8;
@@ -286,4 +293,19 @@ td {
   padding: 40px;
   text-align: center;
   color: #697386;
+}
+
+.renewal-days {
+  margin-top: 5px;
+  color: #8992a3;
+  font-size: 11px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #697386;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }

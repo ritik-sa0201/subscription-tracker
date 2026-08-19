@@ -7,7 +7,7 @@
     "nextRenewalDate": "2026-08-25",
     "status": "active",
     "createdAt": "2026-08-19T12:06:26.686Z",
-    "updatedAt": "2026-08-19T12:27:55.069Z"
+    "updatedAt": "2026-08-19T12:31:54.824Z"
   },
   {
     "id": "1787141458069",
@@ -53,6 +53,16 @@
     "billingCycle": "monthly",
     "nextRenewalDate": "2026-08-20",
     "status": "active",
-    "createdAt": "2026-08-19T12:25:38.537Z"
+    "createdAt": "2026-08-19T12:25:38.537Z",
+    "updatedAt": "2026-08-19T12:32:07.797Z"
+  },
+  {
+    "id": "1787142710429",
+    "serviceName": "Spotify",
+    "cost": 200,
+    "billingCycle": "monthly",
+    "nextRenewalDate": "2026-08-21",
+    "status": "active",
+    "createdAt": "2026-08-19T12:31:50.429Z"
   }
 ]

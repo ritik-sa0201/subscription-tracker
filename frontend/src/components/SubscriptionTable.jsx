@@ -1,3 +1,13 @@
+function formatDate(dateString) {
+  const date = new Date(`${dateString}T00:00:00`);
+
+  return date.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
+}
+
 function SubscriptionTable({
   subscriptions,
   onToggleStatus
@@ -61,14 +71,22 @@ function SubscriptionTable({
                   </td>
 
                   <td>
-                    {subscription.nextRenewalDate}
+  {formatDate(subscription.nextRenewalDate)}
 
-                    {subscription.renewingSoon && (
-                      <span className="renewal-badge">
-                        Renewing Soon
-                      </span>
-                    )}
-                  </td>
+  {subscription.renewingSoon && (
+    <span className="renewal-badge">
+      Renewing Soon
+    </span>
+  )}
+
+  {subscription.daysUntilRenewal >= 0 && (
+    <div className="renewal-days">
+      {subscription.daysUntilRenewal === 0
+        ? "Renews today"
+        : `${subscription.daysUntilRenewal} days left`}
+    </div>
+  )}
+</td>
 
                   <td>
                     <span
