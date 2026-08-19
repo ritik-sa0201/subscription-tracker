@@ -100,20 +100,28 @@ function SubscriptionTable({
 
                   <td>
                     <button
-                      className="toggle-button"
-                      onClick={() =>
-                        onToggleStatus(
-                          subscription.id,
-                          subscription.status === "active"
-                            ? "paused"
-                            : "active"
-                        )
-                      }
-                    >
-                      {subscription.status === "active"
-                        ? "Pause"
-                        : "Resume"}
-                    </button>
+  type="button"
+  className={`status-toggle ${
+    subscription.status === "active"
+      ? "active"
+      : "paused"
+  }`}
+  onClick={() =>
+    onToggleStatus(
+      subscription.id,
+      subscription.status === "active"
+        ? "paused"
+        : "active"
+    )
+  }
+  aria-label={`Switch subscription to ${
+    subscription.status === "active"
+      ? "paused"
+      : "active"
+  }`}
+>
+  <span className="toggle-knob"></span>
+</button>
                   </td>
                 </tr>
               ))

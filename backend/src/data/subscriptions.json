@@ -7,7 +7,7 @@
     "nextRenewalDate": "2026-08-25",
     "status": "active",
     "createdAt": "2026-08-19T12:06:26.686Z",
-    "updatedAt": "2026-08-19T12:31:54.824Z"
+    "updatedAt": "2026-08-19T12:39:09.476Z"
   },
   {
     "id": "1787141458069",
@@ -52,9 +52,9 @@
     "cost": 3000,
     "billingCycle": "monthly",
     "nextRenewalDate": "2026-08-20",
-    "status": "active",
+    "status": "paused",
     "createdAt": "2026-08-19T12:25:38.537Z",
-    "updatedAt": "2026-08-19T12:32:07.797Z"
+    "updatedAt": "2026-08-19T12:36:00.753Z"
   },
   {
     "id": "1787142710429",
@@ -64,5 +64,14 @@
     "nextRenewalDate": "2026-08-21",
     "status": "active",
     "createdAt": "2026-08-19T12:31:50.429Z"
+  },
+  {
+    "id": "1787142936789",
+    "serviceName": "Netflix",
+    "cost": 499,
+    "billingCycle": "monthly",
+    "nextRenewalDate": "2026-08-22",
+    "status": "active",
+    "createdAt": "2026-08-19T12:35:36.789Z"
   }
 ]

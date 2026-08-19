@@ -309,3 +309,32 @@ td {
   font-weight: 700;
   letter-spacing: 0.12em;
 }
+
+.status-toggle {
+  width: 46px;
+  height: 26px;
+  border: none;
+  border-radius: 999px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.status-toggle.active {
+  background: #172033;
+  justify-content: flex-end;
+}
+
+.status-toggle.paused {
+  background: #cbd1da;
+  justify-content: flex-start;
+}
+
+.toggle-knob {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  display: block;
+}
