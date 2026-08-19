@@ -38,7 +38,28 @@ function createSubscription(subscriptionData) {
   return subscription;
 }
 
+function updateSubscriptionStatus(id, status) {
+  const subscriptions = readSubscriptions();
+
+  const subscriptionIndex = subscriptions.findIndex(
+    (subscription) => subscription.id === id
+  );
+
+  if (subscriptionIndex === -1) {
+    return null;
+  }
+
+  subscriptions[subscriptionIndex].status = status;
+  subscriptions[subscriptionIndex].updatedAt =
+    new Date().toISOString();
+
+  writeSubscriptions(subscriptions);
+
+  return subscriptions[subscriptionIndex];
+}
+
 module.exports = {
   getAllSubscriptions,
-  createSubscription
+  createSubscription,
+  updateSubscriptionStatus
 };

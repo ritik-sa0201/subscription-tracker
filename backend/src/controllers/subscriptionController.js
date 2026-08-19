@@ -113,8 +113,50 @@ function getDashboardMetrics(req, res) {
   }
 }
 
+function updateSubscriptionStatus(req, res) {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!["active", "paused"].includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Status must be active or paused"
+      });
+    }
+
+    const subscription =
+      subscriptionService.updateSubscriptionStatus(
+        id,
+        status
+      );
+
+    if (!subscription) {
+      return res.status(404).json({
+        success: false,
+        message: "Subscription not found"
+      });
+    }
+
+    res.json({
+      success: true,
+      message: `Subscription ${status} successfully`,
+      data: subscription
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update subscription status"
+    });
+  }
+}
+
 module.exports = {
   getSubscriptions,
   createSubscription,
-  getDashboardMetrics
+  getDashboardMetrics,
+  updateSubscriptionStatus
 };
