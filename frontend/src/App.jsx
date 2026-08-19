@@ -8,7 +8,8 @@ import SubscriptionTable from "./components/SubscriptionTable";
 import {
   getSubscriptions,
   createSubscription,
-  getDashboardMetrics
+  getDashboardMetrics,
+  updateSubscriptionStatus
 } from "./services/api";
 
 function App() {
@@ -20,6 +21,19 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const handleToggleStatus = async (id, status) => {
+  try {
+    setError("");
+
+    await updateSubscriptionStatus(id, status);
+
+    await loadDashboard();
+  } catch (error) {
+    console.error(error);
+    setError(error.message);
+  }
+};
 
   const loadDashboard = async () => {
     try {
@@ -89,7 +103,7 @@ function App() {
         ) : (
           <SubscriptionTable
             subscriptions={subscriptions}
-            onToggleStatus={() => {}}
+            onToggleStatus={handleToggleStatus}
           />
         )}
 

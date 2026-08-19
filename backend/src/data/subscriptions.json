@@ -6,7 +6,8 @@
     "billingCycle": "monthly",
     "nextRenewalDate": "2026-08-25",
     "status": "active",
-    "createdAt": "2026-08-19T12:06:26.686Z"
+    "createdAt": "2026-08-19T12:06:26.686Z",
+    "updatedAt": "2026-08-19T12:27:55.069Z"
   },
   {
     "id": "1787141458069",
