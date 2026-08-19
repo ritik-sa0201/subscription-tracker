@@ -35,5 +35,23 @@
     "nextRenewalDate": "2026-09-15",
     "status": "active",
     "createdAt": "2026-08-19T12:16:04.145Z"
+  },
+  {
+    "id": "1787142283132",
+    "serviceName": "Docker",
+    "cost": 1200,
+    "billingCycle": "monthly",
+    "nextRenewalDate": "2026-08-29",
+    "status": "active",
+    "createdAt": "2026-08-19T12:24:43.133Z"
+  },
+  {
+    "id": "1787142338537",
+    "serviceName": "Lamdba",
+    "cost": 3000,
+    "billingCycle": "monthly",
+    "nextRenewalDate": "2026-08-20",
+    "status": "active",
+    "createdAt": "2026-08-19T12:25:38.537Z"
   }
 ]

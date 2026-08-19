@@ -8,6 +8,9 @@ function SubscriptionForm({ onSubscriptionAdded }) {
     nextRenewalDate: ""
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -17,13 +20,30 @@ function SubscriptionForm({ onSubscriptionAdded }) {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("Form submitted:", formData);
+    setError("");
+    setLoading(true);
 
-    if (onSubscriptionAdded) {
-      onSubscriptionAdded(formData);
+    try {
+      await onSubscriptionAdded({
+        serviceName: formData.serviceName,
+        cost: Number(formData.cost),
+        billingCycle: formData.billingCycle,
+        nextRenewalDate: formData.nextRenewalDate
+      });
+
+      setFormData({
+        serviceName: "",
+        cost: "",
+        billingCycle: "monthly",
+        nextRenewalDate: ""
+      });
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,13 +103,8 @@ function SubscriptionForm({ onSubscriptionAdded }) {
             value={formData.billingCycle}
             onChange={handleChange}
           >
-            <option value="monthly">
-              Monthly
-            </option>
-
-            <option value="yearly">
-              Yearly
-            </option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
           </select>
         </div>
 
@@ -108,11 +123,20 @@ function SubscriptionForm({ onSubscriptionAdded }) {
           />
         </div>
 
+        {error && (
+          <p className="form-error">
+            {error}
+          </p>
+        )}
+
         <button
           type="submit"
           className="primary-button"
+          disabled={loading}
         >
-          Add Subscription
+          {loading
+            ? "Adding..."
+            : "Add Subscription"}
         </button>
       </form>
     </section>

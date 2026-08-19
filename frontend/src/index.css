@@ -251,3 +251,39 @@ td {
     font-size: 28px;
   }
 }
+
+.form-error {
+  grid-column: span 2;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .form-error {
+    grid-column: span 1;
+  }
+}
+
+.global-error {
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #b42318;
+  font-size: 14px;
+}
+
+.loading-state {
+  padding: 40px;
+  text-align: center;
+  color: #697386;
+}
