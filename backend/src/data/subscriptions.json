@@ -73,5 +73,15 @@
     "nextRenewalDate": "2026-08-22",
     "status": "active",
     "createdAt": "2026-08-19T12:35:36.789Z"
+  },
+  {
+    "id": "1787143332985",
+    "serviceName": "Amazon Prime",
+    "cost": 300,
+    "billingCycle": "monthly",
+    "nextRenewalDate": "2026-08-30",
+    "status": "active",
+    "createdAt": "2026-08-19T12:42:12.985Z",
+    "updatedAt": "2026-08-19T12:42:21.869Z"
   }
 ]

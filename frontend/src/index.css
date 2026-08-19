@@ -1,3 +1,27 @@
+/* ==========================================================================
+   Subscription Tracker — Dark Theme
+   Design tokens (kept as comments for reference; class/tag names unchanged)
+
+   Background   #0A0D12  → near-black ink, faint indigo undertone
+   Surface      #12161F  → card background
+   Surface hi   #171C27  → hover / row stripe
+   Border       #232838  → hairline
+   Border hi    #2E3548  → focus / stronger separators
+   Text         #EDEFF4  → primary
+   Text muted   #8A93A6  → secondary
+   Text faint   #5C6479  → tertiary / placeholders
+   Accent       #7B8CFF  → primary interactive (indigo)
+   Positive     #3ECF8E  → active status, mint
+   Warning      #F5B84E  → renewing soon, amber
+   Danger       #FF6B6B  → errors
+
+   Type: Inter for UI text, "JetBrains Mono" for money/data figures —
+   a small ledger-style signature that treats numbers like a real financial
+   statement (tabular-nums, monospace, right-weighted).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +29,37 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f5f7fb;
-  color: #172033;
+  background:
+    radial-gradient(1100px 560px at 12% -10%, rgba(123, 140, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(62, 207, 142, 0.06), transparent 55%),
+    #0A0D12;
+  background-attachment: fixed;
+  color: #EDEFF4;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(123, 140, 255, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232838;
+  border-radius: 999px;
+  border: 2px solid #0A0D12;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2E3548;
 }
 
 button,
@@ -36,11 +89,14 @@ button {
 .dashboard-header h1 {
   margin: 0 0 8px;
   font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #F5F6FA;
 }
 
 .dashboard-header p {
   margin: 0;
-  color: #697386;
+  color: #8A93A6;
 }
 
 .metrics-grid {
@@ -51,39 +107,58 @@ button {
 }
 
 .metric-card {
-  background: white;
-  border: 1px solid #e4e8ef;
+  position: relative;
+  background: #12161F;
+  border: 1px solid #232838;
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(20, 30, 50, 0.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7B8CFF, #3ECF8E);
+  opacity: 0.8;
 }
 
 .metric-title {
   margin: 0;
-  color: #697386;
-  font-size: 14px;
+  color: #8A93A6;
+  font-size: 12px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .metric-value {
-  margin: 10px 0 6px;
+  margin: 12px 0 6px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
   font-size: 32px;
+  font-weight: 600;
+  color: #F5F6FA;
 }
 
 .metric-subtitle {
   margin: 0;
-  color: #8992a3;
+  color: #5C6479;
   font-size: 13px;
 }
 
 .form-section,
 .table-section {
-  background: white;
-  border: 1px solid #e4e8ef;
+  background: #12161F;
+  border: 1px solid #232838;
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 28px;
-  box-shadow: 0 8px 24px rgba(20, 30, 50, 0.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
 .section-heading {
@@ -93,11 +168,13 @@ button {
 .section-heading h2 {
   margin: 0 0 6px;
   font-size: 20px;
+  font-weight: 600;
+  color: #F5F6FA;
 }
 
 .section-heading p {
   margin: 0;
-  color: #697386;
+  color: #8A93A6;
   font-size: 14px;
 }
 
@@ -116,20 +193,28 @@ button {
 .form-group label {
   font-size: 13px;
   font-weight: 600;
+  color: #C3C9D6;
 }
 
 .form-group input,
 .form-group select {
-  border: 1px solid #d9dee8;
+  border: 1px solid #232838;
   border-radius: 9px;
   padding: 11px 12px;
   outline: none;
-  background: white;
+  background: #0D1017;
+  color: #EDEFF4;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-group input::placeholder {
+  color: #5C6479;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #5b6cff;
+  border-color: #7B8CFF;
+  box-shadow: 0 0 0 3px rgba(123, 140, 255, 0.18);
 }
 
 .primary-button {
@@ -137,13 +222,18 @@ button {
   border: none;
   border-radius: 9px;
   padding: 12px;
-  background: #172033;
-  color: white;
-  font-weight: 600;
+  background: #7B8CFF;
+  color: #0A0D12;
+  font-weight: 700;
+  transition: opacity 0.15s ease, transform 0.05s ease;
 }
 
 .primary-button:hover {
   opacity: 0.9;
+}
+
+.primary-button:active {
+  transform: translateY(1px);
 }
 
 .table-container {
@@ -159,23 +249,30 @@ th,
 td {
   text-align: left;
   padding: 15px 12px;
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid #1B2029;
   white-space: nowrap;
 }
 
 th {
-  color: #697386;
-  font-size: 12px;
+  color: #5C6479;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 td {
   font-size: 14px;
+  color: #DDE1EA;
+  font-variant-numeric: tabular-nums;
+}
+
+tbody tr:hover {
+  background: #171C27;
 }
 
 .billing-cycle {
-  color: #8992a3;
+  color: #5C6479;
   font-size: 12px;
   margin-left: 3px;
 }
@@ -185,8 +282,9 @@ td {
   margin-left: 8px;
   padding: 4px 7px;
   border-radius: 6px;
-  background: #fff3d6;
-  color: #9a6700;
+  background: rgba(245, 184, 78, 0.14);
+  color: #F5B84E;
+  border: 1px solid rgba(245, 184, 78, 0.3);
   font-size: 11px;
   font-weight: 700;
 }
@@ -201,43 +299,48 @@ td {
 }
 
 .status-badge.active {
-  background: #e7f7ed;
-  color: #217a45;
+  background: rgba(62, 207, 142, 0.14);
+  color: #3ECF8E;
+  border: 1px solid rgba(62, 207, 142, 0.3);
 }
 
 .status-badge.paused {
-  background: #edf0f4;
-  color: #697386;
+  background: rgba(139, 147, 166, 0.12);
+  color: #8A93A6;
+  border: 1px solid rgba(139, 147, 166, 0.25);
 }
 
 .paused-row {
   opacity: 0.5;
-  background: #f7f8fa;
+  background: #0D1017;
 }
 .paused-row td {
-  color: #8992a3;
+  color: #5C6479;
 }
 
 .paused-row strong {
-  color: #697386;
+  color: #8A93A6;
 }
 
 .toggle-button {
-  border: 1px solid #d9dee8;
-  background: white;
+  border: 1px solid #232838;
+  background: #0D1017;
+  color: #C3C9D6;
   border-radius: 7px;
   padding: 7px 10px;
   font-size: 12px;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .toggle-button:hover {
-  background: #f5f7fb;
+  background: #171C27;
+  border-color: #2E3548;
 }
 
 .empty-state {
   text-align: center;
   padding: 32px;
-  color: #8992a3;
+  color: #5C6479;
 }
 
 @media (max-width: 700px) {
@@ -264,13 +367,14 @@ td {
   margin: 0;
   padding: 10px 12px;
   border-radius: 8px;
-  background: #fff0f0;
-  color: #b42318;
+  background: rgba(255, 107, 107, 0.12);
+  color: #FF8A8A;
+  border: 1px solid rgba(255, 107, 107, 0.3);
   font-size: 13px;
 }
 
 .primary-button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -284,30 +388,32 @@ td {
   margin-bottom: 20px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #fff0f0;
-  color: #b42318;
+  background: rgba(255, 107, 107, 0.12);
+  color: #FF8A8A;
+  border: 1px solid rgba(255, 107, 107, 0.3);
   font-size: 14px;
 }
 
 .loading-state {
   padding: 40px;
   text-align: center;
-  color: #697386;
+  color: #8A93A6;
 }
 
 .renewal-days {
   margin-top: 5px;
-  color: #8992a3;
+  color: #5C6479;
   font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 
 .eyebrow {
   display: inline-block;
   margin-bottom: 8px;
-  color: #697386;
+  color: #7B8CFF;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .status-toggle {
@@ -318,23 +424,25 @@ td {
   padding: 3px;
   display: flex;
   align-items: center;
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .status-toggle.active {
-  background: #172033;
+  background: #3ECF8E;
   justify-content: flex-end;
 }
 
 .status-toggle.paused {
-  background: #cbd1da;
+  background: #2E3548;
   justify-content: flex-start;
 }
 
 .toggle-knob {
   width: 20px;
   height: 20px;
-  background: white;
+  background: #0A0D12;
   border-radius: 50%;
   display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
 }
