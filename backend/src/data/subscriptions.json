@@ -7,5 +7,23 @@
     "nextRenewalDate": "2026-08-25",
     "status": "active",
     "createdAt": "2026-08-19T12:06:26.686Z"
+  },
+  {
+    "id": "1787141458069",
+    "serviceName": "AWS",
+    "cost": 12000,
+    "billingCycle": "yearly",
+    "nextRenewalDate": "2026-09-15",
+    "status": "active",
+    "createdAt": "2026-08-19T12:10:58.069Z"
+  },
+  {
+    "id": "1787141461426",
+    "serviceName": "AWS",
+    "cost": 12000,
+    "billingCycle": "yearly",
+    "nextRenewalDate": "2026-09-15",
+    "status": "active",
+    "createdAt": "2026-08-19T12:11:01.426Z"
   }
 ]

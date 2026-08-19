@@ -1,13 +1,23 @@
 const subscriptionService = require("../services/subscriptionService");
 
+const {
+  enrichSubscription,
+  calculateDashboardMetrics
+} = require("../services/calculationService");
+
 function getSubscriptions(req, res) {
   try {
-    const subscriptions = subscriptionService.getAllSubscriptions();
+    const subscriptions =
+      subscriptionService.getAllSubscriptions();
+
+    const enrichedSubscriptions =
+      subscriptions.map(enrichSubscription);
 
     res.json({
       success: true,
-      data: subscriptions
+      data: enrichedSubscriptions
     });
+
   } catch (error) {
     console.error(error);
 
@@ -80,7 +90,31 @@ function createSubscription(req, res) {
   }
 }
 
+function getDashboardMetrics(req, res) {
+  try {
+    const subscriptions =
+      subscriptionService.getAllSubscriptions();
+
+    const metrics =
+      calculateDashboardMetrics(subscriptions);
+
+    res.json({
+      success: true,
+      data: metrics
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to calculate dashboard metrics"
+    });
+  }
+}
+
 module.exports = {
   getSubscriptions,
-  createSubscription
+  createSubscription,
+  getDashboardMetrics
 };
